@@ -14,7 +14,7 @@ const register = async ({ name, email, password }) => {
     throw err;
   }
 
-  const user = await User.create({ name, email, password });
+  const user = await User.create({ name, email, password, role: 'analyst' });
   const token = signToken(user._id);
   return { user, token };
 };

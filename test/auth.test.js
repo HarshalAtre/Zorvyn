@@ -23,7 +23,7 @@ describe('Auth — POST /api/auth/register', () => {
     expect(res.status).to.equal(201);
     expect(res.body.success).to.equal(true);
     expect(res.body.data).to.have.property('token');
-    expect(res.body.data.user.role).to.equal('viewer');
+    expect(res.body.data.user.role).to.equal('analyst');
     expect(res.body.data.user).to.not.have.property('password');
   });
 

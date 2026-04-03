@@ -62,9 +62,16 @@ app.use('/api/users', userRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
+app.get('/', (req, res) => {
+  res.status(200).type('text').send('Zorvyn API running. Use /api/... endpoints.');
+});
+
 // 404
 app.use((req, res) => {
-  res.status(404).json({ success: false, message: 'Route not found' });
+  res.status(404).json({
+    success: false,
+    message: 'Route not found',
+  });
 });
 
 // Global error handler
