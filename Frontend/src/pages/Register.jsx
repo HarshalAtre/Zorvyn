@@ -33,7 +33,7 @@ export default function Register() {
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-600 shadow-lg shadow-brand-600/30">
             <Wallet size={20} className="text-white" />
           </div>
-          <span className="text-xl font-bold">FinanceOS</span>
+          <span className="text-xl font-bold">Zorvyn</span>
         </div>
 
         <div className="card p-8">
@@ -50,7 +50,7 @@ export default function Register() {
             {[
               { id: 'name',     label: 'Full name',    type: 'text',     placeholder: 'Alice Smith' },
               { id: 'email',    label: 'Email',         type: 'email',    placeholder: 'you@example.com' },
-              { id: 'password', label: 'Password',      type: 'password', placeholder: '••••••••' },
+              { id: 'password', label: 'Password',      type: 'password', placeholder: '********' },
             ].map(({ id, label, type, placeholder }) => (
               <div key={id}>
                 <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
@@ -69,7 +69,7 @@ export default function Register() {
               </div>
             ))}
             <button type="submit" className="btn-primary w-full mt-2" disabled={loading}>
-              {loading ? 'Creating account…' : 'Create account'}
+              {loading ? 'Creating account...' : 'Create account'}
             </button>
           </form>
 

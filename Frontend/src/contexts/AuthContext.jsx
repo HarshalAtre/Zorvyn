@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const initializeAuth = async () => {
       try {
         const { data } = await authAPI.me();
-        localStorage.removeItem('token');
+        // Keep existing token if present (Bearer fallback for cookie-restricted browsers).
         localStorage.setItem('user', JSON.stringify(data.user));
         setUser(data.user);
       } catch (_) {
@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     const { data } = await authAPI.login(credentials);
-    // Cookie-based session is set by backend; frontend persists only user profile cache.
-    localStorage.removeItem('token');
+    // Backend sets HttpOnly cookie; also store token as Bearer fallback.
+    if (data.token) localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
     setUser(data.user);
     return data.user;
@@ -37,8 +37,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (payload) => {
     const { data } = await authAPI.register(payload);
-    // Cookie-based session is set by backend; frontend persists only user profile cache.
-    localStorage.removeItem('token');
+    // Backend sets HttpOnly cookie; also store token as Bearer fallback.
+    if (data.token) localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
     setUser(data.user);
     return data.user;

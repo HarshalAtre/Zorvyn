@@ -40,7 +40,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-600">
           <Wallet size={16} className="text-white" />
         </div>
-        <span className="font-semibold text-base tracking-tight">FinanceOS</span>
+        <span className="font-semibold text-base tracking-tight">Zorvyn</span>
       </div>
 
       {/* User chip */}

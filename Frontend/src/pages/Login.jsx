@@ -33,7 +33,7 @@ export default function Login() {
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-600 shadow-lg shadow-brand-600/30">
             <Wallet size={20} className="text-white" />
           </div>
-          <span className="text-xl font-bold">FinanceOS</span>
+          <span className="text-xl font-bold">Zorvyn</span>
         </div>
 
         <div className="card p-8">
@@ -66,7 +66,7 @@ export default function Login() {
                   id="password"
                   type={showPw ? 'text' : 'password'}
                   className="input pr-10"
-                  placeholder="••••••••"
+                  placeholder="********"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   required
@@ -81,7 +81,7 @@ export default function Login() {
               </div>
             </div>
             <button type="submit" className="btn-primary w-full mt-2" disabled={loading}>
-              {loading ? 'Signing in…' : 'Sign in'}
+              {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
 
