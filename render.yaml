@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: finance-dashboard-api
+    env: node
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: JWT_COOKIE_DAYS
+        value: 7
