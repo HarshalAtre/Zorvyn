@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "3f2bc17f-6df4-4e73-a42c-24d5f07c3111",
-    "name": "Finance Dashboard API",
+    "name": "Zorvyn API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": "Assessment collection for role-based finance dashboard backend."
   },
@@ -454,3 +454,5 @@
     }
   ]
 }
+
+
