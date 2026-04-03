@@ -10,13 +10,19 @@ const dashboardRoutes = require('./src/routes/dashboard.routes');
 
 const app = express();
 
-// Render/other cloud platforms sit behind a reverse proxy.
-// Enable trust proxy so express-rate-limit can read client IP safely.
-const trustProxyEnv = process.env.TRUST_PROXY;
-if (trustProxyEnv === 'true') {
-  app.set('trust proxy', true);
-} else if (trustProxyEnv && !Number.isNaN(Number(trustProxyEnv))) {
-  app.set('trust proxy', Number(trustProxyEnv));
+// Reverse-proxy hosts (Render, etc.) need trust proxy enabled so
+// express-rate-limit can resolve the real client IP from X-Forwarded-For.
+const trustProxyEnv = (process.env.TRUST_PROXY || '').trim().toLowerCase();
+if (trustProxyEnv) {
+  if (trustProxyEnv === 'true') {
+    app.set('trust proxy', 1);
+  } else if (trustProxyEnv === 'false') {
+    app.set('trust proxy', false);
+  } else if (!Number.isNaN(Number(trustProxyEnv))) {
+    app.set('trust proxy', Number(trustProxyEnv));
+  }
+} else if (process.env.RENDER === 'true' || process.env.RENDER_EXTERNAL_URL) {
+  app.set('trust proxy', 1);
 } else if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
 }
