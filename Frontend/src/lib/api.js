@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '').trim();
+
+if (!API_BASE_URL) {
+  throw new Error('Missing VITE_API_URL. Set it in Frontend/.env or Vercel env variables.');
+}
 
 const api = axios.create({
   baseURL: API_BASE_URL,

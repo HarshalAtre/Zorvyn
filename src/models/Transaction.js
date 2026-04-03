@@ -27,13 +27,6 @@ const transactionSchema = new mongoose.Schema(
       trim: true,
       default: '',
     },
-    // Internal tag used by demo seed script; hidden from API responses.
-    seedTag: {
-      type: String,
-      trim: true,
-      select: false,
-      index: true,
-    },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
